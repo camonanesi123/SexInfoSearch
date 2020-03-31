@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pager, render_pagination %}
+<style type="text/css">
+	#contentTable{
+		table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+		word-break:break-all; word-wrap:break-all; /* 自動換行 */
+	}
+</style>
+{% block content %}
+<h1>没有找到该小姐姐性息!</h1>
+{% endblock %}

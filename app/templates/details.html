@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pager, render_pagination %}
+<style type="text/css">
+	#contentTable{
+		table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+		word-break:break-all; word-wrap:break-all; /* 自動換行 */
+	}
+</style>
+{% block content %}
+<table class="table-striped table-bordered table-condensed ">
+     {% for key, value in xjj.items() %}
+
+    <tr>
+
+        <th> {{ key }} </th>>
+        {% if key=='contact' %}
+        <th><img src="data:;base64,{{ value }}"/></th>
+        {% elif key=='url' %}
+        {% else %}
+        <th>{{ value }} </th>
+        {% endif %}
+    </tr>
+
+ {% endfor %}
+  </table>
+{% endblock %}

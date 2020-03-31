@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pager, render_pagination %}
+
+{% block content %}
+
+{#     推荐用这种方式，比较灵活#}
+    <div class="container">
+  <!-- Content here -->
+
+<div style="width: 100%;margin: 0 auto">
+      <div class="row justify-content-md-center">
+    <h1>小姐姐性息显示，当前城市最近3个月100条数据</h1>
+  </div>
+
+  <div class="row justify-content-md-center">
+      <div class="row">
+    <div class="col-sm">
+            <label for="name" class="form-control mr-sm-2">城市</label>
+    </div>
+    <div class="col-sm">
+      <select id='district' class="form-control selectpicker"  data-live-search="true"></select>
+    </div>
+    <div class="col-sm">
+          <label for="name" class="form-control mr-sm-2">类别</label>
+    </div>
+      <div class="col-sm">
+        <select id="style" class="form-control selectpicker">
+            <option value=''>请选择类别</option>
+            <option value="楼凤兼职">楼凤兼职</option>
+            <option value="高端外围">高端外围</option>
+            <option value="丝足按摩">丝足按摩</option>
+            <option value="洗浴桑拿">洗浴桑拿</option>
+            <option value="酒店宾馆">酒店宾馆</option>
+            <option value="黑店曝光">黑店曝光</option>
+        </select>
+    </div>
+            <div class="col-sm">
+                <button id="search" class="btn btn-outline-success my-2 my-sm-0" >搜索</button>
+            </div>
+  </div>
+
+
+
+
+
+  </div>
+
+
+    <div class="col-sm-4 tips"></div>
+
+    <table id="table" ></table>
+</div>
+  <!-- 模态框 -->
+  <div class="modal fade  bd-example-modal-lg" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+          <h4 class="modal-title">小姐姐性息展示</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+          <!--根据小姐姐id动态加载-->
+         <table border="1px" id="tab">
+             <tr><th>编号</th><th id="id"></th></tr>
+             <tr><th>主题</th><th id="title"></th></tr>
+             <tr><th>类别</th><th id="style1"></th></tr>
+             <tr><th>城区</th><th id="city"></th></tr>
+             <tr><th>服务</th><th id="service"></th></tr>
+             <tr><th>价格</th><th id="price"></th></tr>
+             <tr><th>外形</th><th id="appear"></th></tr>
+             <tr><th>年龄</th><th id="age"></th></tr>
+             <tr><th>安全</th><th id="safe"></th></tr>
+             <tr><th>联系方式</th><th><img id="contact"/></th></tr>
+             <tr><th>感想</th><th id="detail"></th></tr>
+       </table>
+        </div>
+
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    </div>
+{#     1.先定义一个空表#}
+{#     2.用js初始化表，并填充数据#}
+
+<script>
+   function operateFormatter(value, row, index) {
+      return [
+      '<button id="ShowDetails" type="button" class="btn btn-primary " >查看</button>'
+      ].join('');
+      }
+   </script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#search").click(function () {
+        //首先判断下拉菜单是否有值
+        if($('#district').val()=='')
+        {
+            alert('请选择区域');
+            return;
+        }
+        if($('#style').val()=='')
+        {
+            alert('请选择类别');
+            return;
+        }
+        $('#table').bootstrapTable('refreshOptions',{pageNumber:1});
+        $('#table').bootstrapTable({
+            locale: 'zh-CN',
+            url: '/jsondata',  // 请求数据源的路由
+            dataType: "json",
+            pagination: true, //前端处理分页
+            singleSelect: false,//是否只能单选
+            //search: true, //显示搜索框，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            //toolbar: '#toolbar', //工具按钮用哪个容器
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pageNumber: 1, //初始化加载第10页，默认第一页
+            pageSize: 10, //每页的记录行数（*）
+            pageList: [10, 20, 50, 100], //可供选择的每页的行数（*）
+            //strictSearch: true,//设置为 true启用 全匹配搜索，false为模糊搜索
+            //showColumns: true, //显示内容列下拉框
+            //showRefresh: true, //显示刷新按钮
+            //得到查询的参数
+            queryParams: function (params) {
+                //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                var temp = {
+                    limit: params.limit,                         //页面大小
+                    offset: params.offset,   //页码
+                    sort: params.sort,      //排序列名
+                    sortOrder: params.order, //排位命令（desc，asc）
+                    district: $("#district").val(),
+                    style: $("#style").val()
+                };
+                return temp;
+            },
+            minimumCountColumns: 2, //当列数小于此值时，将隐藏内容列下拉框
+            clickToSelect: true, //设置true， 将在点击某行时，自动勾选rediobox 和 checkbox
+            {#        height: 500, //表格高度，如果没有设置height属性，表格自动根据记录条数决定表格高度#}
+            uniqueId: "id", //每一行的唯一标识，一般为主键列
+            //showToggle: true, //是否显示详细视图和列表视图的切换按钮
+            //cardView: false, //是否显示详细视图
+            {#        detailView: true, //是否显示父子表，设置为 true 可以显示详细页面模式,在每行最前边显示+号#}
+            sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+            columns: [{  //定义表头,这个表头必须定义,下边field后边跟的字段名字必须与后端传递的字段名字相同.如:id、name、price跟后端的字段名id  name price是完全一样的.
+
+                field: 'id',
+                title: '序号',
+                align: 'center',  //对齐方式，居中
+                width: '200px'  // 可以写各种样式
+
+            }, {
+                field: 'title',
+                title: '主题',
+                align: 'center'
+            }, {
+                field: 'district',
+                title: '城市-区域',
+                align: 'center',
+
+            }
+            , {
+                field: 'style',
+                title: '妹子类别',
+                align: 'center',
+
+            }, {
+                field: 'price',
+                title: '价位',
+                align: 'center',
+
+            }, {
+                field: 'service',
+                title: '服务',
+                align: 'center',
+
+            }, {
+                title: '联系方式',
+                field: 'edit',
+                align: 'center',
+                formatter: operateFormatter,
+                events: {
+                    "click #ShowDetails": function (e, value, row, index) {
+                        query(row.id)
+                        //$("#myModal").modal('show');
+                    }
+                }
+            }
+            ],
+        });
+        //$("#table").bootstrapTable('refresh');
+    });
+});
+    $(function () {
+        $.ajax({
+            // async:false,             //根据需求，选择同步或异步获取数据
+            type: "get",
+            url: '/citys',
+            dataType: "json",
+            success: function (citys) {
+                console.log(citys);
+                var Data=citys.citys,length=citys.citys.length;
+                if(length>0){
+                    var html = "<option value=''>请选择城区</option>";
+                    for (var i = 0; i < length; i++) {
+                        html += "<option value='" +Data[i]+ "'>" +Data[i]+"</option>";
+                    }
+                    $('#district').html(html);
+                }else{
+                    $('#district').html("<option value=''>暂无</option>");
+                }
+
+                $('#district').selectpicker('refresh');     //设置好内容后刷新，  多用于异步请求
+            },
+            error: function () {
+                console.log("请求失败");
+            }
+        });
+
+    });
+    //动态模态框查询小姐姐性息，根据ID查询
+    function query(id) {
+    $.ajax({
+        url : "/details",
+        async : true,
+        type : "POST",
+        data : {
+            "id" : id
+        },
+        // 成功后开启模态框
+        success : showQuery,
+        error : function() {
+            alert("请求失败");
+        },
+        dataType : "json"
+    });
+    }
+
+    // 查询成功后向模态框插入数据并开启模态框。data是返回的JSON对象
+function showQuery(data) {
+    //alert(data.data.title)
+    //给模态框填数据
+    $("#id").text(data.data.id);
+    $("#title").text(data.data.title);
+    $("#style1").text(data.data.style);
+    $("#city").text(data.data.district);
+    $("#service").text(data.data.service);
+    $("#price").text(data.data.price);
+    $("#appear").text(data.data.appear);
+    $("#age").text(data.data.age);
+    $("#safe").text(data.data.safe);
+    $("#contact").attr('src',"data:;base64,"+data.data.contact+"");
+    $("#detail").text(data.data.detail);
+    // 显示模态框
+    $('#myModal').modal('show');
+
+}
+
+</script>
+
+{% endblock %}

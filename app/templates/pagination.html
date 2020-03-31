@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pager, render_pagination %}
+<style type="text/css">
+	#contentTable{
+		table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+		word-break:break-all; word-wrap:break-all; /* 自動換行 */
+	}
+</style>
+{% block content %}
+    <h1>小姐姐性息显示，当前城市最近3个月100条数据</h1>
+<table class="table-striped table-bordered table-condensed ">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>主题</th>
+      <th>城市-区域</th>
+        <th>价位</th>
+        <th>服务</th>
+        <th>外形</th>
+        <th>联系方式</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.title }}</td>
+        <td>{{ user.district }}</td>
+          <td>{{ user.price }}</td>
+          <td>{{ user.service }}</td>
+          <td>{{ user.appear }}</td>
+        <td><a href="{{ url_for('xiaojiejie.getXjjContact',id = user.id) }}">查看联系方式</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!--    <h1>render_pager</h1> -->
+<!--     {{ render_pager(pagination) }}-->
+<!--    <h1>render_pagination</h1> -->
+    {{ render_pagination(pagination) }}
+{% endblock %}
