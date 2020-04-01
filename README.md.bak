@@ -2,7 +2,6 @@
 一个简单的小姐姐性息查询网站
 用python 虚拟机运行 flask　开发
 
-一、环境配置
 环境配置 CENTOS 7
 安装数据库mysql
 安装Python3
@@ -32,10 +31,8 @@ cd SexInfoSearch
 打开配置文件　config.py
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123qwe@localhost:3306/gatherinfo?charset=utf8"
 把root后面的密码 改成你自己数据库的密码
-使用pip install -r requirements.txt 安装依赖包
 
-
-二、uWSGI服务器配置
+uWSGI服务器配置
 
 uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。Nginx中HttpUwsgiModule的作用是与uWSGI服务器进行交换。
 
@@ -81,33 +78,3 @@ wget 127.0.0.1:8000 测试是否工作正常
 
 工作正常之后用配置文件启动uwsgi服务器
 uwsgi --ini uwsgi.ini
-
-三、配置NGINX服务器 将域名和IP地址端口号 映射到uWsgi服务器来
-具体配置如下：
-# mysite_nginx.conf
-# the upstream component nginx needs to connect to
-upstream flask {
-    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
-    server 127.0.0.1:3031; # for a web port socket (we'll use this first)
-}
-# configuration of the server
-server {
-    # the port your site will be served on
-    listen      8000;
-    # the domain name it will serve for
-    server_name 162.211.224.93; # substitute your machine's IP address or FQDN
-    charset     utf-8;
-    # max upload size
-    client_max_body_size 75M;   # adjust to taste
-    # Finally, send all non-media requests to the Django server.
-    location / {
-        uwsgi_pass  flask;
-        # the uwsgi_params file you installed
-        include uwsgi_params;
-    }
-}
-弄好了重启一下NGINX
-
-然后打开浏览器输入
-162.211.224.9:8000
-查看是否启动成功

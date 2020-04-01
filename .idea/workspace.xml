@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62dbb72f-3bd4-4e71-8377-1b23699d1d5f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/pagination1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pagination1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +156,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584979490581</updated>
       <workItem from="1584979495309" duration="22621000" />
-      <workItem from="1585176174188" duration="161999000" />
+      <workItem from="1585176174188" duration="164649000" />
     </task>
     <servers />
   </component>
