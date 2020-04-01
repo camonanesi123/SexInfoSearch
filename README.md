@@ -1,24 +1,28 @@
-# SexInfoSearch
-一个简单的小姐姐性息查询网站
-用python 虚拟机运行 flask　开发
+# SexInfoSearch 一个简单的小姐姐性息查询网站
+============================================
+![](https://github.com/camonanesi123/SexInfoSearch/blob/master/app/static/favicon.png) 
 
-一、环境配置
-环境配置 CENTOS 7
-安装数据库mysql
-安装Python3
-wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
- tar Jxvf Python-3.5.1.tar.xz
- cd Python-3.5.1
- ./configure --prefix=/usr/local/python3
- make && make install
+## 使用技术 telegramBot python flask sqlAldemy ajax bootstrap json mysql
 
-新建指向新版本 Python 以及 pip 的软连接
-cp /usr/local/python3/bin/python3 /usr/bin/python3
-ln -s /usr/local/python3/bin/python3.5 /usr/bin/python3
-python3 -v 查看是否安装成功
-pip3 -V 查看是否安装成功 
-pip3 install virtualenv
+*一、环境配置
+*安装数据库mysql</br>
+*安装Python3</br>
+'''Bash
+wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz </br>
+tar Jxvf Python-3.5.1.tar.xz </br>
+cd Python-3.5.1  </br>
+./configure --prefix=/usr/local/python3 </br>
+make && make install </br>
+'''
 
+*新建指向新版本 Python 以及 pip 的软连接</br>
+'''Bash
+cp /usr/local/python3/bin/python3 /usr/bin/python3 </br>
+ln -s /usr/local/python3/bin/python3.5 /usr/bin/python3 </br>
+python3 -v 查看是否安装成功 </br>
+pip3 -V 查看是否安装成功  </br>
+pip3 install virtualenv </br>
+'''
 #在当前文件夹下构建虚拟环境
 virtualenv -p /usr/local/python3/bin/python3 venv
 #启动虚拟环境
@@ -107,6 +111,14 @@ server {
     }
 }
 弄好了重启一下NGINX
+
+四、去域名解析网站 把域名 解析到 本IP地址80端口上来 然后可以测试一下
+
+五、NGINX添加HTTPS配置
+
+待定
+
+六、每周使用 小姐姐爬虫 爬数据 然后同步到数据库上去
 
 然后打开浏览器输入
 162.211.224.9:8000
