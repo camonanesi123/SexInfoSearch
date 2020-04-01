@@ -7,13 +7,13 @@
 *一、环境配置
 *安装数据库mysql</br>
 *安装Python3</br>
-'''Bash
-wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz </br>
+` `` Bash
+wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz 
 tar Jxvf Python-3.5.1.tar.xz </br>
 cd Python-3.5.1  </br>
 ./configure --prefix=/usr/local/python3 </br>
 make && make install </br>
-'''
+` `` 
 
 *新建指向新版本 Python 以及 pip 的软连接</br>
 '''Bash
