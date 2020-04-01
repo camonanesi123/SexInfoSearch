@@ -121,6 +121,8 @@ server {
 
 六、每周使用 小姐姐爬虫 爬数据 然后同步到数据库上去
 
+#mysql -uroot -proot < detail_info.sql
+
 然后打开浏览器输入
 ip_address:8000
 查看是否启动成功
