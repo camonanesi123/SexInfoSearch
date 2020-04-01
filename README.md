@@ -3,7 +3,7 @@
 
 ## telegramBot python flask sqlAldemy ajax bootstrap json mysql
 
-##一、环境配置
+一、环境配置
 安装数据库mysql</br>
 安装Python3</br>
 ```Bash
@@ -37,7 +37,7 @@ SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123qwe@localhost:3306/gatherinfo
 pip install -r requirements.txt 
 ```
 
-#二、uWSGI服务器配置 </br>
+二、uWSGI服务器配置 </br>
 
 uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。Nginx中HttpUwsgiModule的作用是与uWSGI服务器进行交换。 </br>
 WSGI是一种Web服务器网关接口。它是一个Web服务器（如nginx）与应用服务器（如uWSGI服务器）通信的一种规范。 </br>
@@ -84,7 +84,7 @@ wget 127.0.0.1:8000 #测试是否工作正常
 uwsgi --ini uwsgi.ini 
 ```
 
-#三、配置NGINX服务器 将域名和IP地址端口号 映射到uWsgi服务器来 </br>
+三、配置NGINX服务器 将域名和IP地址端口号 映射到uWsgi服务器来 </br>
 具体配置如下：
 ```Bash
 #mysite_nginx.conf
@@ -113,14 +113,14 @@ server {
 
 弄好了重启一下NGINX  </br>
 
-#四、去域名解析网站 把域名 解析到 本IP地址80端口上来 然后可以测试一下 </br>
+四、去域名解析网站 把域名 解析到 本IP地址80端口上来 然后可以测试一下 </br>
 
-#五、NGINX添加HTTPS配置 </br>
+五、NGINX添加HTTPS配置 </br>
 
-#待定
+待定
 
-#六、每周使用 小姐姐爬虫 爬数据 然后同步到数据库上去
+六、每周使用 小姐姐爬虫 爬数据 然后同步到数据库上去
 
-#然后打开浏览器输入
-#ip_address:8000
-#查看是否启动成功
+然后打开浏览器输入
+ip_address:8000
+查看是否启动成功
