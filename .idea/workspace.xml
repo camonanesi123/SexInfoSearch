@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62dbb72f-3bd4-4e71-8377-1b23699d1d5f" name="Default Changelist" comment="" />
+    <list default="true" id="62dbb72f-3bd4-4e71-8377-1b23699d1d5f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pagination1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pagination1.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +162,7 @@
       <workItem from="1585176174188" duration="170065000" />
       <workItem from="1585743629001" duration="26000" />
       <workItem from="1585743806111" duration="19414000" />
-      <workItem from="1585963143054" duration="19423000" />
+      <workItem from="1585963143054" duration="27315000" />
     </task>
     <servers />
   </component>
@@ -213,10 +218,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="214" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1585963141056" />
-    <state x="379" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1585188964995">
+    <state x="379" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1586179240187">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="379" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1585188964995" />
+    <state x="379" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1586179240187" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -33,10 +33,10 @@
 {
   width: 50px;
   height: 50px;
-  color:smoke;
+  color:red;
   padding: 8px 2px;
   border: 2px solid;
-  border-color: smoke;
+  border-color: pink;
   border-radius: 50%;
 }
 
