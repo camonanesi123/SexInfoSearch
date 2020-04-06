@@ -9,4 +9,5 @@ if __name__ == '__main__':
     print(pemPath)
     keyPath = os.path.join(proDir, "app\\3660880_www.younglass.com.key")
     print(keyPath)
-    app.run(debug=True, ssl_context=(pemPath, keyPath))
+    app.run(debug=True)
+    #app.run(debug=True, ssl_context=(pemPath, keyPath))

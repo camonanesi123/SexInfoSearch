@@ -152,11 +152,11 @@ config = configparser.ConfigParser()
 config.read(path, encoding="utf-8")
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+                    level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 #print(config.sections())
 updater = Updater(config['TELEGRAM']['ACCESS_TOKEN'], use_context=True, workers=32)
-
+#updater.bot.setWebhook('https://bot.khashtamov.com/planet/bot/{bot_token}/'.format(bot_token=bot_token))
 
 #写一个包函数
 def send_action(action):
@@ -179,7 +179,9 @@ send_upload_photo_action = send_action(telegram.ChatAction.UPLOAD_PHOTO)
 @xiaojiejie.route('/hook', methods=['POST'])
 def webhook_handler():
     """Set route /hook with POST method will trigger this method."""
+    """https://api.telegram.org/bot1080551756:AAFyFgZ3jBg6F4bIFk5IK9Wko8X59eTPSpU/setwebhook?url=https://www.younglass.com/hook"""
     if request.method == "POST":
+        print(request.get_json(force=True))
         update = telegram.Update.de_json(request.get_json(force=True), updater.bot)
 
         # Update dispatcher process that handler to process this message
@@ -223,7 +225,7 @@ def get_rand_xjj(update,context):
                                  parse_mode=telegram.ParseMode.HTML)
     else:
         #把联系方式做成超链接
-        contact="https://www.younglass.com/image/{0}".format(rs.id)
+        contact="http://www.younglass.com/image/{0}".format(rs.id)
         contact = "<a href ='{0}'>点击查看，耐心等待</a>".format(contact)
         #处理Detail数据 过滤掉telegram send message 中 不允许的Html标签和字符
         rs.detail = re.sub("<[^>]*?>", "", rs.detail)
