@@ -121,8 +121,16 @@ server {
 
 六、每周使用 小姐姐爬虫 爬数据 然后同步到数据库上去
 
-#mysql -uroot -proot < detail_info.sql
+#mysql -uroot -proot -D gatherinfo < detail_info.sql
 
 然后打开浏览器输入
 ip_address:8000
 查看是否启动成功
+
+```Bash
+#今天遇到问题
+#服务器上使用nginx+uwgsi 怎么也无法调用webhook
+#刚刚看了一下官方的文档，可以通过机器人@CanOfWormsBot 来测试你的webhook是否设置好
+#我还使用了 POSTMAN 模拟HTTPS 请求发送给 WEBHOOK 报文如下{"update_id": 137135676, "message": {"entities": [{"offset": 0, "length": 4, "type": "bot_command"}], "from": {"language_code": "zh-hans", "is_bot": "False", "id": 1017960142, "first_name": "komo", "username": "Komonado"}, "chat": {"type": "private", "id": 1017960142, "first_name": "komo", "username": "Komonado"}, "text": "/xjj 兼职 兰州", "date": 1585815927, "message_id": 272}} 
+#POSTMAN 可以正常调用BOT 可是 TELEGRAM就不行 
+```
