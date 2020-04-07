@@ -38,6 +38,7 @@
   border: 2px solid;
   border-color: pink;
   border-radius: 50%;
+  background-color:#40D4FF
 }
 
 
@@ -91,4 +92,10 @@
 }
 .footer a {
 	color: #78828D
+}
+
+
+.div p h1 h2 h3 h4
+{
+	color: #5D5D5D
 }
