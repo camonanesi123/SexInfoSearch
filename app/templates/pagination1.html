@@ -3,6 +3,18 @@
 
 {% block content %}
 
+<!-- 广告的CSS -->
+<style>
+
+img{border:none}
+.box{ width:361px; height:361px; margin:20px auto; position:relative}
+.ad_time{ width:361px; height:351px; background:#000; filter:alpha(opacity=50);-moz-opacity:0.5;opacity: 0.5; padding:5px; position:absolute; top:0; left:0; color:#fff;}
+.ad_time span{ font-weight:bold; color:#cc0; padding:0 5px;}
+.guanbi{ width:49px; height:20px; background:url({{ url_for('static', filename='close.png') }}) no-repeat; position:absolute; top:0; right:0; cursor:pointer;}
+
+</style>
+
+
 {#     推荐用这种方式，比较灵活#}
     <div class="container">
   <!-- Content here -->
@@ -13,7 +25,6 @@
   </div>
 
   <div class="row justify-content-md-center">
-
 
       <div class="row">
     <div class="col-sm">
@@ -49,9 +60,9 @@
     <table id="table" ></table>
 </div>
   <!-- 模态框 -->
-  <div class="modal fade  bd-example-modal-lg" id="myModal">
+  <div class="modal fade  bd-example-modal-lg" id="myModal" >
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content" style="background-color:#40D4FF">
 
         <!-- 模态框头部 -->
         <div class="modal-header">
@@ -59,7 +70,15 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
-        <!-- 模态框主体 -->
+
+<!-- 广告框主体 -->
+<div class="box">
+ <div class="ad"><a href="http://www.52sexhub.com/shop" target="_blank"><img src="{{ url_for('static', filename='logo.png') }}" style="width:361px;height:361px"/></a></div>
+ <div class="ad_time">时间还剩<span id="t">5</span>秒</div>
+ <div class="guanbi"></div>
+</div>
+
+<!-- 模态框主体 -->
         <div class="modal-body">
           <!--根据小姐姐id动态加载-->
          <table border="1px" id="tab">
@@ -97,6 +116,24 @@
       }
    </script>
 <script type="text/javascript">
+
+function lxfEndtime(){
+    // 获取计数器的时间
+ $t=$('#t').html();
+ //如果不为零 每秒减1
+ if($t!=0){
+  $('#t').html($t-1);
+  $i=setTimeout("lxfEndtime()",1000);
+ }else{
+  //如果为零 关闭广告，重新开始
+  $('.box').hide();
+  $('.modal-body').show();
+  $('#t').html(6);
+  $('.ad_time').css({'width':'361px','height':'351px'});
+  clearTimeout($i);
+ }
+};
+
 $(document).ready(function() {
     $("#search").click(function () {
         //首先判断下拉菜单是否有值
@@ -196,6 +233,18 @@ $(document).ready(function() {
         });
         //$("#table").bootstrapTable('refresh');
     });
+
+
+//单击关闭广告
+ $('.guanbi').click(function(){
+  $('.box').hide();
+  $('.modal-body').show();
+  $('#t').html(6);
+  $('.ad_time').css({'width':'361px','height':'351px'});
+  clearTimeout($i);
+ })
+
+
 });
     $(function () {
         $.ajax({
@@ -259,6 +308,13 @@ function showQuery(data) {
     $("#detail").text(data.data.detail);
     // 显示模态框
     $('#myModal').modal('show');
+    //添加统计时间函数
+    //计数器重新写成6
+    $('#t').html(6);
+    $('.box').show();
+    $('.ad_time').animate({width:110,height:30},'slow');
+    $('.modal-body').hide();
+    lxfEndtime();
 
 }
 
