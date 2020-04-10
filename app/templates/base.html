@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>粉红豹小姐姐查询网</title>
+    <title>粉红豹小姐姐咨讯网</title>
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-table.css') }}">
@@ -23,15 +23,12 @@
 
 
 <body style="background-color:#FF7DC6">
-<div class="jumbotron text-center" style="margin-bottom:0;background-color:#FF7DC6">
-  <h1 style="color:#5D5D5D">广告位招租1000元/月</h1>
-  <p style="color:#5D5D5D">享受合伙人权益每月分红</p>
-            <p><a class="btn btn-primary btn-lg" href="https://t.me/sexinfochina" role="button" >
-         加入Telegram社群</a>
-</div>
+
+{% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light mb-4"  style="background-color:#40D4FF">
+      <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="{{ url_for('static', filename='logo.png') }}" width="80" height="80" alt="">
+            <img src="{{ url_for('static', filename='favicon.ico') }}" width="40" height="40" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,17 +40,30 @@
                 {{ render_nav_item('xiaojiejie.pagination1', '性息查询', use_li=True) }}
                 {{ render_nav_item('xiaojiejie.products', '印度神油', use_li=True) }}
             </ul>
-        </div>
-    </nav>
 
-    <main class="container">
+        <!-- 根据是否登录动态加载 -->
+
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+<!-- 广告模块 -->
+<div class="jumbotron text-center" style="margin-bottom:0;background-color:#FF7DC6">
+  <h1 style="color:#5D5D5D">广告位招租1000元/月</h1>
+  <p style="color:#5D5D5D">享受合伙人权益每月分红</p>
+            <p><a class="btn btn-primary btn-lg" href="https://t.me/sexinfochina" role="button" >
+         加入Telegram社群</a>
+</div>
+<!-- 主页模块 -->
+    <main>
+    <div class="container">
         {{ render_messages(container=False, dismissible=True) }}
         {% block content %}{% endblock %}
+
+    </div>
     </main>
-
+{% block footer %}
     <footer class="navbar-fixed-bottom text-center">
-        {% block footer %}
-
          <div class="container-fluid py-3" style="background-color:#40D4FF">
     <div class="container">
       <div class="row">
@@ -91,8 +101,11 @@
       </div>
     </div>
     </div>
-                {% endblock %}
+
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278762346'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1278762346%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
     </footer>
+{% endblock %}
 
 </body>
 
