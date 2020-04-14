@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="62dbb72f-3bd4-4e71-8377-1b23699d1d5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pagination1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pagination1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/products.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +36,17 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\IBM\venv\app\static" />
-      <recent name="C:\Users\IBM\venv\app\static\js" />
-      <recent name="C:\Users\IBM\venv\app\static\css" />
-      <recent name="C:\Users\IBM\venv\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\IBM\venv\app" />
       <recent name="C:\Users\IBM\venv\app\static\js" />
       <recent name="C:\Users\IBM\venv\app\static" />
       <recent name="C:\Users\IBM\venv\app\static\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\IBM\venv\app\static" />
+      <recent name="C:\Users\IBM\venv\app\static\js" />
+      <recent name="C:\Users\IBM\venv\app\static\css" />
+      <recent name="C:\Users\IBM\venv\app" />
     </key>
   </component>
   <component name="RunManager" selected="Python.server">
@@ -164,7 +161,9 @@
       <workItem from="1585743629001" duration="26000" />
       <workItem from="1585743806111" duration="19414000" />
       <workItem from="1585963143054" duration="65061000" />
-      <workItem from="1586505976178" duration="10734000" />
+      <workItem from="1586505976178" duration="11332000" />
+      <workItem from="1586837872904" duration="598000" />
+      <workItem from="1586839105652" duration="489000" />
     </task>
     <servers />
   </component>
@@ -180,22 +179,22 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="129" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1586506237079" />
-    <state width="1544" height="190" key="GridCell.Tab.0.bottom" timestamp="1586659392078">
+    <state width="1544" height="190" key="GridCell.Tab.0.bottom" timestamp="1586778900859">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1544" height="190" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1586659392078" />
-    <state width="1544" height="190" key="GridCell.Tab.0.center" timestamp="1586659392076">
+    <state width="1544" height="190" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1586778900859" />
+    <state width="1544" height="190" key="GridCell.Tab.0.center" timestamp="1586778900859">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1544" height="190" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1586659392076" />
-    <state width="1544" height="190" key="GridCell.Tab.0.left" timestamp="1586659392037">
+    <state width="1544" height="190" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1586778900859" />
+    <state width="1544" height="190" key="GridCell.Tab.0.left" timestamp="1586778900858">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1544" height="190" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1586659392037" />
-    <state width="1544" height="190" key="GridCell.Tab.0.right" timestamp="1586659392077">
+    <state width="1544" height="190" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1586778900858" />
+    <state width="1544" height="190" key="GridCell.Tab.0.right" timestamp="1586778900859">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1544" height="190" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1586659392077" />
+    <state width="1544" height="190" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1586778900859" />
     <state width="1544" height="241" key="GridCell.Tab.1.bottom" timestamp="1585415107235">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -216,10 +215,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="170" y="0" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1585205372511" />
-    <state x="392" y="214" key="com.intellij.ide.util.TipDialog" timestamp="1586506061398">
+    <state x="392" y="214" key="com.intellij.ide.util.TipDialog" timestamp="1586839239161">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="214" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1586506061398" />
+    <state x="392" y="214" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1586839239161" />
     <state x="379" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1586179240187">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
