@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <p> {{ data['time'][0] }} </p> <br>
-        <p> {{ data['message'][0] }} </p>
+
+    <p><a href="{{ url_for('static', filename='V2rayU.dmg') }}">苹果版 V2rayN 下载</a></p>
+    <p><a href="{{ url_for('static', filename='v2rayNG_1.2.8.apk') }}">安卓版 V2rayN 下载</a></p>
+    <p><a href="{{ url_for('static', filename='ndp48-web.exe') }}">windows客户端 V2rayN 下载</a></p>
+    <p><a href="{{ url_for('static', filename='v2ray v1.3.2.pdf') }}">使用教程下载</a></p>
+    <p><a href="https://github.com/v2ray/v2ray-core/releases">官方 V2rayN 下载</a></p>
+    <p>每日更新免费V2RAYN节点，用于学术论文检索，若用于其它非法用途本网站既不负责！</p>
+    <p>{{v2rayn['time']}}</p>
+    <textarea rows="30" cols="100">
+{{v2rayn['text']}}
+</textarea>
+
+
 {% endblock %}

@@ -13,7 +13,6 @@ from flask import request, render_template, Blueprint, flash, redirect, url_for,
 from flask_paginate import Pagination, get_page_parameter, get_page_args
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from app.controller import XjjDao
-from telethon import TelegramClient, sync
 
 
 # 定义蓝图
@@ -60,30 +59,55 @@ def infos():
 
 
 # 查询telegram里面分享的最新节点信息
+@xiaojiejie.route('/updatelist', methods=['GET', 'POST'])
+def updatelist():
+    return render_template('updatelist.html')
+
+@xiaojiejie.route('/update',methods = ['POST', 'GET'])
+def update():
+   if request.method == 'POST':
+      v2rayn = {}
+      time = request.form['time']
+      text = request.form['text']
+      #插入数据库
+      # 打开数据库连接
+      db = pymysql.connect(host='localhost', port=3306, user='root', passwd='123qwe', db='gatherinfo', charset='utf8')
+      # 使用 cursor() 方法创建一个游标对象 cursor
+      try:
+          cursor = db.cursor()
+          cursor.execute("TRUNCATE TABLE `v2rayn`;")
+          cursor.execute("INSERT INTO `v2rayn` (`time`, `text`) VALUES ('{0}', '{1}');".format(time,text))
+      except:
+          db.rollback()
+          db.close()
+          raise
+      else:
+          db.commit()
+          db.close()
+      return redirect(url_for('xiaojiejie.nodelist',v2rayn = v2rayn))
+
+# 查询telegram里面分享的最新节点信息
 @xiaojiejie.route('/nodelist', methods=['GET', 'POST'])
 def nodelist():
-    api_id = 1270798
-    api_hash = 'ba6bdbc98abfee378a2d0973a9576712'
-    phone_number = 'Registered mobile number with country code'
-    channel_username = 'https://t.me/v2list'
-    client = TelegramClient('session_name', api_id, api_hash).start()
-    chats = client.get_messages(channel_username, 1)  # n = Number of messages to be extracted
-    message_id = []
-    message = []
-    sender = []
-    reply_to = []
-    time = []
-    if len(chats):
-        for chat in chats:
-            message_id.append(chat.id)
-            message.append(chat.message)
-            sender.append(chat.from_id)
-            reply_to.append(chat.reply_to_msg_id)
-            time.append(chat.date)
-            # print(chat.message)
-    data = {'message_id': message_id, 'message': message, 'sender_ID': sender, 'reply_to_msg_id': reply_to,
-            'time': time}
-    return render_template('nodelist.html',data=data)
+    # 打开数据库连接
+    db = pymysql.connect(host='localhost', port=3306,user='root', passwd='123qwe', db='gatherinfo', charset='utf8')
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
+    sqlSel = "select * from v2rayn limit 1"
+
+    print(sqlSel)
+    try:
+        cursor.execute(sqlSel)
+        rs = cursor.fetchone()
+        v2rayn = {}
+        v2rayn['time'] = rs[0]
+        v2rayn['text']=rs[1]
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
+        db.close()
+    return render_template('nodelist.html',v2rayn=v2rayn)
 
 
 # 小姐姐性息分页查询
