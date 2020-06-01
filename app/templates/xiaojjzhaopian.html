@@ -1,7 +1,66 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<!-- 广告的CSS -->
+<style>
+
+img{border:none}
+.box{ width:361px; height:361px; margin:20px auto; position:relative}
+.ad_time{ width:361px; height:351px; background:#000; filter:alpha(opacity=50);-moz-opacity:0.5;opacity: 0.5; padding:5px; position:absolute; top:0; left:0; color:#fff;}
+.ad_time span{ font-weight:bold; color:#cc0; padding:0 5px;}
+.guanbi{ width:49px; height:20px; background:url({{ url_for('static', filename='close.png') }}) no-repeat; position:absolute; top:0; right:0; cursor:pointer;}
+
+</style>
+<div class="container">
+<h1 align="center">联系方式</h1><br>
+<!-- 广告框主体 -->
+<div class="box">
+ <div class="ad"><a href="https://52sexhub.com/shop/product/ghb/" target="_blank"><img src="{{ url_for('static', filename='0k0wt-6awrz.gif') }}" style="width:361px;height:361px"/></a></div>
+ <div class="ad_time">时间还剩<span id="t">5</span>秒</div>
+ <div class="guanbi"></div>
+</div>
+
+<div class="tupian" align="center">
 <img src="data:;base64,{{ xiaojjzhaopian }}"/>
+</div>
+
+</div>
+<script type="text/javascript">
+
+$('#t').html(6);
+$('.box').show();
+$('.ad_time').animate({width:110,height:30},'slow');
+$('.tupian').hide();
+lxfEndtime();
+
+function lxfEndtime(){
+    // 获取计数器的时间
+ $t=$('#t').html();
+ //如果不为零 每秒减1
+ if($t!=0){
+  $('#t').html($t-1);
+  $i=setTimeout("lxfEndtime()",1000);
+ }else{
+  //如果为零 关闭广告，重新开始
+  $('.box').hide();
+  $('.tupian').show();
+  $('#t').html(6);
+  $('.ad_time').css({'width':'361px','height':'351px'});
+  clearTimeout($i);
+ }
+};
+//单击关闭广告
+ $('.guanbi').click(function(){
+  $('.box').hide();
+  $('.tupian').show();
+  $('#t').html(6);
+  $('.ad_time').css({'width':'361px','height':'351px'});
+  clearTimeout($i);
+ })
+
+ </script>
+
 {% endblock %}
 
 

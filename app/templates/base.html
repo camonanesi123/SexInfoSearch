@@ -24,6 +24,31 @@
 
 <body style="background-color:#FF7DC6">
 
+<!--把button放在右下角，这个是可以随意修改的，你可以改成一个链接一个图片之类的-->
+<div id="google_translate_element" style="position:absolute;top:10px;right:10px;z-index:2000;opacity:0.7"></div>
+<script>
+function googleTranslateElementInit() {
+
+	new google.translate.TranslateElement(
+		{
+                //这个参数不起作用，看文章底部更新，翻译面板的语言
+                //pageLanguage: 'zh-CN',
+            //这个是你需要翻译的语言，比如你只需要翻译成越南和英语，这里就只写en,vi
+			includedLanguages: 'en,zh-CN,hr,cs,da,nl,fr,de,el,iw,hu,ga,it,ja,ko,pt,ro,ru,sr,es,th,vi',
+            //选择语言的样式，这个是面板，还有下拉框的样式，具体的记不到了，找不到api~~
+			layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            //自动显示翻译横幅，就是翻译后顶部出现的那个，有点丑，这个属性没有用的话，请看文章底部的其他方法
+			autoDisplay: true,
+			//还有些其他参数，由于原插件不再维护，找不到详细api了，将就了，实在不行直接上dom操作
+		},
+		'google_translate_element'//触发按钮的id
+	);
+
+}
+</script>
+<script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
 {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light mb-4"  style="background-color:#40D4FF">
       <div class="container">
@@ -38,7 +63,8 @@
 
             <ul class="navbar-nav mr-auto">
                 {{ render_nav_item('xiaojiejie.pagination1', '资讯查询', use_li=True) }}
-                {{ render_nav_item('xiaojiejie.products', '高端资源', use_li=True) }}
+                {{ render_nav_item('xiaojiejie.products', '使用电报', use_li=True) }}
+                {{ render_nav_item('xiaojiejie.nodelist', '免费节点', use_li=True) }}
             </ul>
 
         <!-- 根据是否登录动态加载 -->
@@ -49,8 +75,9 @@
 {% endblock %}
 <!-- 广告模块 -->
 <div class="jumbotron text-center" style="margin-bottom:0;background-color:#FF7DC6">
-  <h1 style="color:#5D5D5D">广告位招租1000元/月</h1>
-  <p style="color:#5D5D5D">享受合伙人权益每月分红</p>
+  <h2 style="color:#5D5D5D">妹子代购 保障正品 助勃延时 无效退款</h2>
+   <img src="{{ url_for('static', filename='weige.jpg') }}" width="150" height="150" alt="">
+  <p style="color:#5D5D5D"></p>
             <p><a class="btn btn-primary btn-lg" href="https://t.me/sexinfochina" role="button" >
          加入Telegram社群</a>
 </div>
@@ -88,17 +115,15 @@
 		</a>
             </div>
 
-            <div class="bg-circle-outline d-inline-block">
-              <a href="https://wa.me/85255316990">
-                <i class="fa fa-2x fa-fw fa-whatsapp text-white"></i></a>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
     </div>
 
-<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278762346'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1278762346%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278866936'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278866936%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 
     </footer>
 {% endblock %}
